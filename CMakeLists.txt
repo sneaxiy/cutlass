@@ -979,3 +979,7 @@ install(
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/NvidiaCutlassPackageConfig.cmake)
 
+add_library(fastmatmul SHARED capi/fast_matmul.cu)
+target_include_directories(fastmatmul PRIVATE $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/capi) 
+cutlass_apply_standard_compile_options(fastmatmul)
+cutlass_apply_cuda_gencode_flags(fastmatmul)
